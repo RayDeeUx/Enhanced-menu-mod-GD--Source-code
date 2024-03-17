@@ -14,7 +14,16 @@ class $modify(MenuLayer) {
 			return false;
                         
         bool hasIconProfileMod = Loader::get()->isModLoaded("capeling.icon_profile_2.2");
+        bool hasBetterMenuMod = Loader::get()->isModLoaded("muhammadgames.better_menu");
+        bool hasMinecraftify = Loader::get()->isModLoaded("zalphalaneous.minecraft");
+        bool hasMinecraftMenu = Loader::get()->isModLoaded("undifined0.minecraft_menu");
+        bool hasNoGrounds = Loader::get()->isModLoaded("riley.nogrounds");
 
+        if (
+        hasBetterMenuMod == false &&
+        hasMinecraftify == false &&
+        hasMinecraftMenu == false
+        ) {
 
         // changes the editor button
         this->getChildByIDRecursive("editor-button")->setPosition(211.25, 55);
@@ -39,8 +48,10 @@ class $modify(MenuLayer) {
         this->getChildByIDRecursive("stats-button")->setPosition(403.5, 276.5);
 
         // changes the newgrounds button
-        this->getChildByIDRecursive("newgrounds-button")->setPosition(320.2, 24.5);
-        this->getChildByIDRecursive("newgrounds-button")->setScale(0.844);
+        if (hasNoGrounds == false) {
+                this->getChildByIDRecursive("newgrounds-button")->setPosition(320.2, 24.5);
+                this->getChildByIDRecursive("newgrounds-button")->setScale(0.844);
+        }
 
         // changes the geode button
         this->getChildByIDRecursive("geode.loader/geode-button")->setPosition(139.5, 48.476);
@@ -58,6 +69,8 @@ class $modify(MenuLayer) {
         else {
                 this->getChildByIDRecursive("profile-button")->setPosition(54.5, 44);
                 this->getChildByIDRecursive("profile-button")->setScale(1.4);
+        }
+
         }
 
         return true;

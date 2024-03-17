@@ -1,7 +1,7 @@
-# v1.1.0
+# V1.1.0
 
- * Changed the **description** and **fixed** minor bugs.
+* <cg>**revamped**</c> the description and added <cg>**compatibility**</c> checks to reduce **crashes** caused by conflicting **mods**.
 
-# v1.0.0
+# V1.0.0
 
- * Released the **mod**.
+* Released the <cg>**mod**</c>.

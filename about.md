@@ -1,11 +1,9 @@
 # <cj>Enhanced Menu</c>
 
-****
-
-This **mod** makes the <cg>**Main Menu**</c> look a little bit <cg>**better**</c>!
+This **mod** makes the <cg>**Main Menu**</c> look a little bit <cg>**better**</c>! 
 
 ## <cr>**WARNING**</c>
- <cr>You have to **disable** any other **mod** that changes the **main menu** in order for this **mod** to work.</c>
+<cr>To guarantee that this **mod** works correctly, you need to **turn off** additional mods such as **Minecraftify** and **Better Menu**.</c>
 
 ## Repository
 Link to the **Github Repository** for **Enhanced Menu**.

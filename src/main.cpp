@@ -1,78 +1,84 @@
-#include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
-#include <Geode/loader/Mod.hpp>
-#include <Geode/cocos/label_nodes/CCLabelBMFont.h>
-#include <iostream>
 
 using namespace geode::prelude;
 
-
-
 class $modify(MenuLayer) {
 	bool init() {
-		if (!MenuLayer::init())
-			return false;
-                        
-        bool hasIconProfileMod = Loader::get()->isModLoaded("capeling.icon_profile_2.2");
-        bool hasBetterMenuMod = Loader::get()->isModLoaded("muhammadgames.better_menu");
-        bool hasMinecraftify = Loader::get()->isModLoaded("zalphalaneous.minecraft");
-        bool hasMinecraftMenu = Loader::get()->isModLoaded("undifined0.minecraft_menu");
-        bool hasNoGrounds = Loader::get()->isModLoaded("riley.nogrounds");
+		if (!MenuLayer::init()) { return false; }
+			
+		bool hasIconProfileMod = Loader::get()->isModLoaded("capeling.icon_profile_2.2");
+		bool hasBetterMenuMod = Loader::get()->isModLoaded("muhammadgames.bettermenu");
+		bool hasMinecraftify = Loader::get()->isModLoaded("zalphalaneous.minecraft");
+		bool hasMinecraftMenu = Loader::get()->isModLoaded("undefined0.minecraft_menu");
+		bool hasNoGrounds = Loader::get()->isModLoaded("riley.nogrounds");
+	
+		if (
+			!hasBetterMenuMod &&
+			!hasMinecraftify &&
+			!hasMinecraftMenu
+		) {
+	
+			// changes the editor button
+			if (auto editorButton = getChildByIDRecursive("editor-button")) {
+				editorButton->setPosition(211.25, 55);
+				editorButton->setScale(1.55);
+			}
+		
+			// changes the play button
+			if (auto playButton = getChildByIDRecursive("play-button")) {
+				playButton->setPosition(320, 55);
+				playButton->setScale(0.7);
+			}
+		
+			// changes the 3 middle buttons
+			if (auto mainMenu = getChildByIDRecursive("main-menu")) mainMenu->setPosition(284.5, 190);
+		
+			// changes the achievements button
+			if (auto achievementsButton = getChildByIDRecursive("achievements-button")) {
+				achievementsButton->setPosition(-90.45, 284.45);
+				achievementsButton->setScale(0.619);
+			}
+		
+			// changes the settings button
+			if (auto settingsButton = getChildByIDRecursive("settings-button")) {
+				settingsButton->setPosition(383, 80.476);
+				settingsButton->setScale(0.819);
+			}
+		
+			// changes the stats button
+			if (auto statsButton = getChildByIDRecursive("stats-button")) statsButton->setPosition(403.5, 276.5);
+		
+			// changes the newgrounds button
+			if (!hasNoGrounds) {
+				getChildByIDRecursive("newgrounds-button")->setPosition(320.2, 24.5);
+				getChildByIDRecursive("newgrounds-button")->setScale(0.844);
+			}
+		
+			// changes the geode button
+			if (auto geodeButton = getChildByIDRecursive("geode.loader/geode-button")) {
+				geodeButton->setPosition(139.5, 48.476);
+				geodeButton->setScale(1.6);
+			}
+		
+			// changes the username button
+			if (auto playerUsername = getChildByIDRecursive("player-username"))
+			{
+				playerUsername->setPosition(72, 175);
+				playerUsername->setScale(0.679);
+			}
+		
+			// changes the username button with compatibility for the IconProfile mod
+			if (hasIconProfileMod) {
+				getChildByIDRecursive("profile-button")->setPosition(99.5, 44);
+				getChildByIDRecursive("profile-button")->setScale(1.4);
+			}
+			else {
+				getChildByIDRecursive("profile-button")->setPosition(54.5, 44);
+				getChildByIDRecursive("profile-button")->setScale(1.4);
+			}
+	
+		}
 
-        if (
-        hasBetterMenuMod == false &&
-        hasMinecraftify == false &&
-        hasMinecraftMenu == false
-        ) {
-
-        // changes the editor button
-        this->getChildByIDRecursive("editor-button")->setPosition(211.25, 55);
-        this->getChildByIDRecursive("editor-button")->setScale(1.55);
-
-        // changes the play button
-        this->getChildByIDRecursive("play-button")->setPosition(320, 55);
-        this->getChildByIDRecursive("play-button")->setScale(0.7);
-
-        // changes the 3 middle buttons
-        this->getChildByIDRecursive("main-menu")->setPosition(284.5, 190);
-
-        // changes the achievements button
-        this->getChildByIDRecursive("achievements-button")->setPosition(-90.45, 284.45);
-        this->getChildByIDRecursive("achievements-button")->setScale(0.619);
-
-        // changes the settings button
-        this->getChildByIDRecursive("settings-button")->setPosition(383, 80.476);
-        this->getChildByIDRecursive("settings-button")->setScale(0.819);
-
-        // changes the stats button
-        this->getChildByIDRecursive("stats-button")->setPosition(403.5, 276.5);
-
-        // changes the newgrounds button
-        if (hasNoGrounds == false) {
-                this->getChildByIDRecursive("newgrounds-button")->setPosition(320.2, 24.5);
-                this->getChildByIDRecursive("newgrounds-button")->setScale(0.844);
-        }
-
-        // changes the geode button
-        this->getChildByIDRecursive("geode.loader/geode-button")->setPosition(139.5, 48.476);
-        this->getChildByIDRecursive("geode.loader/geode-button")->setScale(1.6);
-
-        // changes the username button
-        this->getChildByIDRecursive("player-username")->setPosition(72, 175);
-        this->getChildByIDRecursive("player-username")->setScale(0.679);
-
-        // changes the username button with compatibility for the IconProfile mod
-        if (hasIconProfileMod == true) {
-                this->getChildByIDRecursive("profile-button")->setPosition(99.5, 44);
-                this->getChildByIDRecursive("profile-button")->setScale(1.4);
-        }
-        else {
-                this->getChildByIDRecursive("profile-button")->setPosition(54.5, 44);
-                this->getChildByIDRecursive("profile-button")->setScale(1.4);
-        }
-
-        }
-
-        return true;
+	return true;
 	}
 };
